@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>ClerkAI</title>
+
+<style>
+body {
+font-family: Arial;
+background:#f2f2f2;
+text-align:center;
+padding:40px;
+}
+
+.box {
+background:white;
+max-width:600px;
+margin:auto;
+padding:30px;
+border-radius:15px;
+}
+
+textarea {
+width:90%;
+height:120px;
+padding:10px;
+}
+
+button {
+background:black;
+color:white;
+padding:12px 30px;
+border:none;
+border-radius:8px;
+cursor:pointer;
+}
+
+#reply {
+margin-top:20px;
+background:#eee;
+padding:15px;
+border-radius:10px;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="box">
+
+<h1>ClerkAI</h1>
+
+<h2>Your AI Sales Assistant</h2>
+
+<p>Turn customer messages into professional sales replies.</p>
+
+<textarea id="message" placeholder="Paste customer message here..."></textarea>
+
+<br><br>
+
+<button onclick="generateReply()">
+Generate Reply
+</button>
+
+
+<h3>AI Reply:</h3>
+
+<div id="reply">
+Waiting for message...
+</div>
+
+
+</div>
+
+
+<script>
+
+function generateReply(){
+
+var message = document.getElementById("message").value;
+
+if(message==""){
+document.getElementById("reply").innerHTML=
+"Please enter customer message.";
+return;
+}
+
+
+document.getElementById("reply").innerHTML =
+"Hello, thank you for contacting us.<br><br>" +
+"We appreciate your interest. We would be happy to provide more information and help you with the next steps.<br><br>" +
+"Please let us know how we can assist you.";
+
+}
+
+</script>
+
+
+</body>
+</html>
