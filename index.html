@@ -84,12 +84,23 @@ document.getElementById("reply").innerHTML=
 "Please enter customer message.";
 return;
 }
-
-
+fetch("https://clerkai-api-2026.nnebin6.workers.dev", {
+method: "POST",
+headers: {
+"Content-Type": "application/json"
+},
+body: JSON.stringify({
+message: message
+})
+})
+.then(response => response.json())
+.then(data => {
+document.getElementById("reply").innerHTML = data.reply;
+})
+.catch(error => {
 document.getElementById("reply").innerHTML =
-"Hello, thank you for contacting us.<br><br>" +
-"We appreciate your interest. We would be happy to provide more information and help you with the next steps.<br><br>" +
-"Please let us know how we can assist you.";
+"Error connecting to AI";
+});;
 
 }
 
