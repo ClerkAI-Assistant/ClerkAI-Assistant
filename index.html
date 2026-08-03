@@ -1,111 +1,360 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<title>ClerkAI</title>
+
+<title>ClerkAI - AI Sales Assistant</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
+
 body {
-font-family: Arial;
-background:#f2f2f2;
-text-align:center;
+margin:0;
+font-family:Arial, sans-serif;
+background:#050505;
+color:white;
+}
+
+.container {
+max-width:1100px;
+margin:auto;
 padding:40px;
 }
 
-.box {
-background:white;
-max-width:600px;
-margin:auto;
-padding:30px;
-border-radius:15px;
+
+.logo {
+font-size:35px;
+font-weight:bold;
+color:#d4af37;
 }
 
-textarea {
-width:90%;
-height:120px;
-padding:10px;
+
+.star {
+font-size:45px;
+color:#d4af37;
 }
+
+
+.hero {
+text-align:center;
+padding:80px 20px;
+}
+
+
+.hero h1 {
+font-size:55px;
+}
+
+
+.hero span {
+color:#d4af37;
+}
+
+
+.hero p {
+font-size:22px;
+color:#ccc;
+}
+
 
 button {
-background:black;
-color:white;
-padding:12px 30px;
+background:#d4af37;
+color:black;
+padding:15px 35px;
 border:none;
-border-radius:8px;
+border-radius:10px;
+font-size:18px;
 cursor:pointer;
 }
 
-#reply {
-margin-top:20px;
-background:#eee;
+
+
+.cards {
+display:flex;
+gap:20px;
+flex-wrap:wrap;
+}
+
+
+.card {
+
+background:#111;
+padding:25px;
+border-radius:15px;
+flex:1;
+min-width:250px;
+
+}
+
+
+.card h2 {
+color:#d4af37;
+}
+
+
+
+.demo {
+
+background:#111;
+border-radius:15px;
+padding:30px;
+margin-top:40px;
+
+}
+
+
+.customer {
+
+background:#222;
 padding:15px;
 border-radius:10px;
+
 }
+
+
+.ai {
+
+background:#d4af37;
+color:black;
+padding:15px;
+border-radius:10px;
+margin-top:15px;
+
+}
+
+
+
+.price {
+
+background:#111;
+padding:30px;
+border-radius:15px;
+text-align:center;
+
+}
+
+
+footer {
+
+text-align:center;
+color:#888;
+padding:40px;
+
+}
+
+
 </style>
 
 </head>
 
+
 <body>
 
-<div class="box">
 
-<h1>ClerkAI</h1>
+<div class="container">
 
-<h2>Your AI Sales Assistant</h2>
 
-<p>Turn customer messages into professional sales replies.</p>
+<div class="logo">
 
-<textarea id="message" placeholder="Paste customer message here..."></textarea>
+<span class="star">✡</span>
+ClerkAI
 
-<br><br>
+</div>
 
-<button onclick="generateReply()">
-Generate Reply
+
+
+<section class="hero">
+
+
+<h1>
+Your AI Sales Assistant
+<span>24/7</span>
+</h1>
+
+
+<p>
+Turn customer messages into professional sales conversations automatically.
+</p>
+
+
+<button>
+Create Your AI Assistant
 </button>
 
 
-<h3>AI Reply:</h3>
+</section>
 
-<div id="reply">
-Waiting for message...
+
+
+
+<h1>
+Why ClerkAI?
+</h1>
+
+
+<div class="cards">
+
+
+<div class="card">
+
+<h2>🤖 AI Sales Agent</h2>
+
+<p>
+Professional answers for your customers automatically.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h2>🌍 Multi Language</h2>
+
+<p>
+English, Persian, German, French, Spanish, Chinese and Hebrew.
+</p>
+
+</div>
+
+
+
+<div class="card">
+
+<h2>💎 Brand Personality</h2>
+
+<p>
+Your AI speaks with your brand voice.
+</p>
+
 </div>
 
 
 </div>
 
 
-<script>
 
-function generateReply(){
 
-var message = document.getElementById("message").value;
 
-if(message==""){
-document.getElementById("reply").innerHTML=
-"Please enter customer message.";
-return;
-}
-fetch("https://clerkai-api-2026.nnebin6.workers.dev", {
-method: "POST",
-headers: {
-"Content-Type": "application/json"
-},
-body: JSON.stringify({
-message: message
-})
-})
-.then(response => response.json())
-.then(data => {
-document.getElementById("reply").innerHTML = data.reply;
-})
-.catch(error => {
-document.getElementById("reply").innerHTML =
-"Error connecting to AI";
-});;
+<div class="demo">
 
-}
+<h1>
+AI Conversation Example
+</h1>
 
-</script>
+
+<div class="customer">
+
+Customer:
+<br>
+How much is this watch?
+
+</div>
+
+
+<div class="ai">
+
+ClerkAI:
+<br><br>
+Hello 😊 Thank you for your interest.
+We would love to help you find the perfect option.
+
+</div>
+
+
+</div>
+
+
+
+
+<h1>
+Plans
+</h1>
+
+
+<div class="cards">
+
+
+<div class="price">
+
+<h2>
+Starter
+</h2>
+
+<h1>
+$9
+</h1>
+
+<p>
+AI Sales Assistant
+<br>
+1 Business
+<br>
+Basic customization
+</p>
+
+
+</div>
+
+
+
+<div class="price">
+
+<h2>
+Business
+</h2>
+
+<h1>
+$29
+</h1>
+
+<p>
+Unlimited messages
+<br>
+Multi-language
+<br>
+Advanced AI
+</p>
+
+
+</div>
+
+
+
+<div class="price">
+
+<h2>
+Commission
+</h2>
+
+<h1>
+0$
+</h1>
+
+<p>
+Pay only when ClerkAI helps create sales.
+</p>
+
+
+</div>
+
+
+</div>
+
+
+
+</div>
+
+
+
+<footer>
+
+© 2026 ClerkAI - AI Sales Assistant
+
+</footer>
+
 
 
 </body>
+
 </html>
