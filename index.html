@@ -300,4 +300,59 @@ How can we help you today?`;
 
   }
 
+}return new Response(
+
+  JSON.stringify({
+
+    reply: reply,
+    intent: intent
+
+  }),
+
+  {
+
+    headers: {
+
+      ...corsHeaders,
+
+      "Content-Type": "application/json"
+
+    }
+
+  }
+
+);
+
+
+} catch(error) {
+
+
+return new Response(
+
+  JSON.stringify({
+
+    reply: "Server error. Please try again."
+
+  }),
+
+  {
+
+    headers: {
+
+      ...corsHeaders,
+
+      "Content-Type": "application/json"
+
+    }
+
+  }
+
+);
+
+
 }
+
+
+}
+
+};
