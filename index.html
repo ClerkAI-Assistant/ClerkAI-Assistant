@@ -8,55 +8,93 @@
 
 body{
 font-family:Arial, sans-serif;
-background:#f5f7fb;
+background:#0f172a;
 margin:0;
+color:white;
 }
 
 .container{
-max-width:750px;
+max-width:800px;
 margin:40px auto;
 background:white;
-padding:35px;
-border-radius:20px;
-box-shadow:0 10px 30px #ddd;
+color:#111;
+padding:40px;
+border-radius:25px;
+box-shadow:0 20px 50px rgba(0,0,0,.3);
 }
 
-h1{
+.logo{
 text-align:center;
+font-size:38px;
+font-weight:bold;
 }
 
-.subtitle{
+.tagline{
 text-align:center;
 color:#555;
+margin-bottom:30px;
 }
 
-input, textarea, select, button{
+label{
+font-weight:bold;
+display:block;
+margin-top:15px;
+}
+
+input,textarea,select,button{
+
 width:100%;
-padding:14px;
-margin-top:12px;
-border-radius:10px;
+padding:15px;
+margin-top:8px;
+border-radius:12px;
 border:1px solid #ddd;
 font-size:16px;
 box-sizing:border-box;
+
 }
+
 
 button{
-background:#111;
+
+background:#2563eb;
 color:white;
+border:none;
 cursor:pointer;
+font-weight:bold;
+
 }
 
+
+button:hover{
+
+background:#1d4ed8;
+
+}
+
+
 #reply{
+
 margin-top:25px;
-background:#f1f1f1;
 padding:20px;
-border-radius:12px;
+background:#f1f5f9;
+border-radius:15px;
 white-space:pre-line;
+
+}
+
+
+.footer{
+
+text-align:center;
+margin-top:30px;
+color:#777;
+
 }
 
 </style>
 
 </head>
+
 
 <body>
 
@@ -64,24 +102,47 @@ white-space:pre-line;
 <div class="container">
 
 
-<h1>🤖 ClerkAI</h1>
+<div class="logo">
+🤖 ClerkAI
+</div>
 
-<p class="subtitle">
-AI Sales Assistant for any business
-</p>
 
+<div class="tagline">
+AI Sales Assistant for Businesses Worldwide
+</div>
+
+
+
+<label>
+Business Name
+</label>
 
 <input id="business"
-placeholder="Business name">
+placeholder="Example: Luxury Store">
 
+
+
+<label>
+Products / Services
+</label>
 
 <input id="products"
-placeholder="Products or services">
+placeholder="Example: Watches, Software, Clothes">
 
+
+
+<label>
+Price Information
+</label>
 
 <input id="price"
-placeholder="Price information">
+placeholder="Example: Starting from $100">
 
+
+
+<label>
+Customer Language
+</label>
 
 <select id="language">
 
@@ -96,18 +157,32 @@ Persian
 </select>
 
 
+
+<label>
+Customer Message
+</label>
+
 <textarea id="message"
-placeholder="Customer message">
+rows="5"
+placeholder="Write customer message...">
 </textarea>
 
 
+
 <button onclick="sendMessage()">
-Generate Sales Reply
+Generate AI Sales Reply
 </button>
 
 
+
 <div id="reply">
-AI response will appear here...
+AI reply will appear here...
+</div>
+
+
+
+<div class="footer">
+Powered by ClerkAI AI Engine
 </div>
 
 
@@ -130,7 +205,9 @@ const response = await fetch(
 method:"POST",
 
 headers:{
+
 "Content-Type":"application/json"
+
 },
 
 body:JSON.stringify({
@@ -157,10 +234,12 @@ document.getElementById("language").value
 );
 
 
+
 const data = await response.json();
 
 
-document.getElementById("reply").innerHTML =
+
+document.getElementById("reply").innerText =
 data.reply;
 
 
