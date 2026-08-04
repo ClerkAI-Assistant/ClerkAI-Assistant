@@ -1,360 +1,91 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-
-<title>ClerkAI - AI Sales Assistant</title>
-
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-<style>
-
-body {
-margin:0;
-font-family:Arial, sans-serif;
-background:#050505;
-color:white;
-}
-
-.container {
-max-width:1100px;
-margin:auto;
-padding:40px;
-}
-
-
-.logo {
-font-size:35px;
-font-weight:bold;
-color:#d4af37;
-}
-
-
-.star {
-font-size:45px;
-color:#d4af37;
-}
-
-
-.hero {
-text-align:center;
-padding:80px 20px;
-}
-
-
-.hero h1 {
-font-size:55px;
-}
-
-
-.hero span {
-color:#d4af37;
-}
-
-
-.hero p {
-font-size:22px;
-color:#ccc;
-}
-
-
-button {
-background:#d4af37;
-color:black;
-padding:15px 35px;
-border:none;
-border-radius:10px;
-font-size:18px;
-cursor:pointer;
-}
-
-
-
-.cards {
-display:flex;
-gap:20px;
-flex-wrap:wrap;
-}
-
-
-.card {
-
-background:#111;
-padding:25px;
-border-radius:15px;
-flex:1;
-min-width:250px;
-
-}
-
-
-.card h2 {
-color:#d4af37;
-}
-
-
-
-.demo {
-
-background:#111;
-border-radius:15px;
-padding:30px;
-margin-top:40px;
-
-}
-
-
-.customer {
-
-background:#222;
-padding:15px;
-border-radius:10px;
-
-}
-
-
-.ai {
-
-background:#d4af37;
-color:black;
-padding:15px;
-border-radius:10px;
-margin-top:15px;
-
-}
-
-
-
-.price {
-
-background:#111;
-padding:30px;
-border-radius:15px;
-text-align:center;
-
-}
-
-
-footer {
-
-text-align:center;
-color:#888;
-padding:40px;
-
-}
-
-
-</style>
-
-</head>
-
-
-<body>
-
-
-<div class="container">
-
-
-<div class="logo">
-
-<span class="star">✡</span>
-ClerkAI
-
-</div>
-
-
-
-<section class="hero">
-
-
-<h1>
-Your AI Sales Assistant
-<span>24/7</span>
-</h1>
-
-
-<p>
-Turn customer messages into professional sales conversations automatically.
-</p>
-
-
-<button>
-Create Your AI Assistant
-</button>
-
-
-</section>
-
-
-
-
-<h1>
-Why ClerkAI?
-</h1>
-
-
-<div class="cards">
-
-
-<div class="card">
-
-<h2>🤖 AI Sales Agent</h2>
-
-<p>
-Professional answers for your customers automatically.
-</p>
-
-</div>
-
-
-<div class="card">
-
-<h2>🌍 Multi Language</h2>
-
-<p>
-English, Persian, German, French, Spanish, Chinese and Hebrew.
-</p>
-
-</div>
-
-
-
-<div class="card">
-
-<h2>💎 Brand Personality</h2>
-
-<p>
-Your AI speaks with your brand voice.
-</p>
-
-</div>
-
-
-</div>
-
-
-
-
-
-<div class="demo">
-
-<h1>
-AI Conversation Example
-</h1>
-
-
-<div class="customer">
-
-Customer:
-<br>
-How much is this watch?
-
-</div>
-
-
-<div class="ai">
-
-ClerkAI:
-<br><br>
-Hello 😊 Thank you for your interest.
-We would love to help you find the perfect option.
-
-</div>
-
-
-</div>
-
-
-
-
-<h1>
-Plans
-</h1>
-
-
-<div class="cards">
-
-
-<div class="price">
-
-<h2>
-Starter
-</h2>
-
-<h1>
-$9
-</h1>
-
-<p>
-AI Sales Assistant
-<br>
-1 Business
-<br>
-Basic customization
-</p>
-
-
-</div>
-
-
-
-<div class="price">
-
-<h2>
-Business
-</h2>
-
-<h1>
-$29
-</h1>
-
-<p>
-Unlimited messages
-<br>
-Multi-language
-<br>
-Advanced AI
-</p>
-
-
-</div>
-
-
-
-<div class="price">
-
-<h2>
-Commission
-</h2>
-
-<h1>
-0$
-</h1>
-
-<p>
-Pay only when ClerkAI helps create sales.
-</p>
-
-
-</div>
-
-
-</div>
-
-
-
-</div>
-
-
-
-<footer>
-
-© 2026 ClerkAI - AI Sales Assistant
-
-</footer>
-
-
-
-</body>
-
-</html>
+export default {
+  async fetch(request) {
+
+    const corsHeaders = {
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "POST, OPTIONS",
+      "Access-Control-Allow-Headers": "Content-Type"
+    };
+
+    if (request.method === "OPTIONS") {
+      return new Response(null, {
+        headers: corsHeaders
+      });
+    }
+
+    if (request.method !== "POST") {
+      return new Response(
+        "ClerkAI Final Sales Engine Running",
+        {
+          headers: corsHeaders
+        }
+      );
+    }
+
+    try {
+
+      const data = await request.json();
+
+      const business = data.business || "our store";
+      const products = data.products || "our products";
+      const price = data.price || "Contact us for price";
+      const message = data.message || "";
+      const language = data.language || "English";
+
+      const text = message.toLowerCase();
+
+      let intent = "general";
+
+      if (
+        text.includes("buy") ||
+        text.includes("order") ||
+        text.includes("purchase") ||
+        text.includes("خرید")
+      ) {
+        intent = "buy";
+      }
+
+      else if (
+        text.includes("price") ||
+        text.includes("cost") ||
+        text.includes("how much") ||
+        text.includes("قیمت")
+      ) {
+        intent = "price";
+      }
+
+      else if (
+        text.includes("discount") ||
+        text.includes("offer") ||
+        text.includes("cheap") ||
+        text.includes("تخفیف")
+      ) {
+        intent = "discount";
+      }
+
+      else if (
+        text.includes("delivery") ||
+        text.includes("shipping") ||
+        text.includes("ارسال")
+      ) {
+        intent = "delivery";
+      }
+
+      else if (
+        text.includes("expensive") ||
+        text.includes("too much") ||
+        text.includes("گران")
+      ) {
+        intent = "objection";
+      }
+
+      else if (
+        text.includes("return") ||
+        text.includes("refund") ||
+        text.includes("گارانتی")
+      ) {
+        intent = "support";
+      }
+
+
+      let reply = "";
