@@ -23,15 +23,21 @@ box-shadow:0 10px 30px #ddd;
 
 h1{
 text-align:center;
+color:#111;
 }
 
-input,textarea,button{
+p{
+text-align:center;
+}
+
+input, textarea, select, button{
 width:100%;
-padding:15px;
+padding:14px;
 margin-top:12px;
 border-radius:10px;
 border:1px solid #ddd;
 font-size:16px;
+box-sizing:border-box;
 }
 
 button{
@@ -40,18 +46,21 @@ color:white;
 cursor:pointer;
 }
 
+button:hover{
+opacity:.8;
+}
+
 #reply{
 margin-top:20px;
 padding:20px;
 background:#f1f1f1;
 border-radius:10px;
-min-height:50px;
+white-space:pre-line;
 }
 
 </style>
 
 </head>
-
 
 <body>
 
@@ -59,9 +68,7 @@ min-height:50px;
 
 <h1>🤖 ClerkAI</h1>
 
-<p>
-AI Sales Assistant for your business
-</p>
+<p>AI Sales Assistant for your business</p>
 
 
 <input id="business"
@@ -77,6 +84,19 @@ placeholder="Products">
 <input id="price"
 value="Starting from $500"
 placeholder="Price">
+
+
+<select id="language">
+
+<option value="English">
+English
+</option>
+
+<option value="Persian">
+Persian
+</option>
+
+</select>
 
 
 <textarea id="message"
@@ -103,10 +123,13 @@ async function sendMessage(){
 let res = await fetch(
 "https://clerkai-api-2026.nnebin6.workers.dev",
 {
+
 method:"POST",
+
 headers:{
 "Content-Type":"application/json"
 },
+
 body:JSON.stringify({
 
 business:
@@ -121,9 +144,11 @@ document.getElementById("price").value,
 message:
 document.getElementById("message").value,
 
-language:"English"
+language:
+document.getElementById("language").value
 
 })
+
 });
 
 
