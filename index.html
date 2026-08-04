@@ -2,17 +2,96 @@
 <html>
 <head>
 <title>ClerkAI Assistant</title>
+
+<style>
+body{
+font-family:Arial;
+max-width:600px;
+margin:40px auto;
+padding:20px;
+}
+
+input,textarea,button{
+width:100%;
+padding:12px;
+margin:8px 0;
+}
+
+button{
+background:#111;
+color:white;
+cursor:pointer;
+}
+
+#reply{
+background:#f2f2f2;
+padding:15px;
+margin-top:15px;
+}
+</style>
+
 </head>
 
 <body>
 
-<h1>ClerkAI Assistant 🤖</h1>
+<h1>🤖 ClerkAI Sales Assistant</h1>
 
-<p>Your AI Sales Assistant is ready.</p>
+<input id="business" placeholder="Business name" value="Luxury Watch">
 
-<button>
-Start Chat
+<input id="products" placeholder="Products" value="Rolex watches, Smart watches, Gold watches">
+
+<input id="price" placeholder="Price" value="Starting from $500">
+
+<textarea id="message" placeholder="Customer message"></textarea>
+
+<button onclick="sendMessage()">
+Send
 </button>
+
+<div id="reply"></div>
+
+
+<script>
+
+async function sendMessage(){
+
+const response = await fetch(
+"https://clerkai-api-2026.nnebin6.workers.dev",
+{
+method:"POST",
+headers:{
+"Content-Type":"application/json"
+},
+body:JSON.stringify({
+
+business:
+document.getElementById("business").value,
+
+products:
+document.getElementById("products").value,
+
+price:
+document.getElementById("price").value,
+
+message:
+document.getElementById("message").value,
+
+language:"English"
+
+})
+});
+
+
+const data = await response.json();
+
+
+document.getElementById("reply").innerHTML =
+data.reply;
+
+}
+
+</script>
+
 
 </body>
 </html>
