@@ -7,17 +7,15 @@
 <style>
 
 body{
-font-family:Arial, sans-serif;
+font-family:Arial,sans-serif;
 background:#0f172a;
 margin:0;
-color:white;
 }
 
 .container{
-max-width:800px;
+max-width:850px;
 margin:40px auto;
 background:white;
-color:#111;
 padding:40px;
 border-radius:25px;
 box-shadow:0 20px 50px rgba(0,0,0,.3);
@@ -25,27 +23,29 @@ box-shadow:0 20px 50px rgba(0,0,0,.3);
 
 .logo{
 text-align:center;
-font-size:38px;
+font-size:42px;
 font-weight:bold;
 }
 
 .tagline{
 text-align:center;
 color:#555;
+font-size:18px;
 margin-bottom:30px;
 }
 
-label{
-font-weight:bold;
-display:block;
-margin-top:15px;
+.info{
+background:#f8fafc;
+padding:25px;
+border-radius:15px;
+margin-bottom:25px;
 }
 
 input,textarea,select,button{
 
 width:100%;
 padding:15px;
-margin-top:8px;
+margin-top:10px;
 border-radius:12px;
 border:1px solid #ddd;
 font-size:16px;
@@ -53,22 +53,18 @@ box-sizing:border-box;
 
 }
 
-
 button{
 
 background:#2563eb;
 color:white;
 border:none;
-cursor:pointer;
 font-weight:bold;
+cursor:pointer;
 
 }
 
-
 button:hover{
-
 background:#1d4ed8;
-
 }
 
 
@@ -81,7 +77,6 @@ border-radius:15px;
 white-space:pre-line;
 
 }
-
 
 .footer{
 
@@ -112,37 +107,49 @@ AI Sales Assistant for Businesses Worldwide
 </div>
 
 
+<div class="info">
 
-<label>
-Business Name
-</label>
+<h2>
+Turn Visitors Into Customers
+</h2>
+
+<p>
+ClerkAI helps businesses answer customers,
+recommend products and create professional sales replies instantly.
+</p>
+
+<h3>
+How it works:
+</h3>
+
+<ul>
+
+<li>Customer sends a message</li>
+
+<li>AI understands customer needs</li>
+
+<li>AI creates a sales response</li>
+
+<li>Business converts more customers</li>
+
+</ul>
+
+</div>
+
+
 
 <input id="business"
-placeholder="Example: Luxury Store">
+placeholder="Business Name">
 
-
-
-<label>
-Products / Services
-</label>
 
 <input id="products"
-placeholder="Example: Watches, Software, Clothes">
+placeholder="Products or Services">
 
-
-
-<label>
-Price Information
-</label>
 
 <input id="price"
-placeholder="Example: Starting from $100">
+placeholder="Price Information">
 
 
-
-<label>
-Customer Language
-</label>
 
 <select id="language">
 
@@ -158,13 +165,9 @@ Persian
 
 
 
-<label>
-Customer Message
-</label>
-
 <textarea id="message"
 rows="5"
-placeholder="Write customer message...">
+placeholder="Customer message">
 </textarea>
 
 
@@ -190,6 +193,7 @@ Powered by ClerkAI AI Engine
 
 
 
+
 <script>
 
 
@@ -205,9 +209,7 @@ const response = await fetch(
 method:"POST",
 
 headers:{
-
 "Content-Type":"application/json"
-
 },
 
 body:JSON.stringify({
@@ -234,9 +236,7 @@ document.getElementById("language").value
 );
 
 
-
 const data = await response.json();
-
 
 
 document.getElementById("reply").innerText =
