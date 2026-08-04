@@ -1,20 +1,37 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>ClerkAI Assistant</title>
+
+<title>ClerkAI Sales Assistant</title>
 
 <style>
+
 body{
 font-family:Arial;
-max-width:600px;
+background:#f5f7fb;
+margin:0;
+}
+
+.container{
+max-width:700px;
 margin:40px auto;
-padding:20px;
+background:white;
+padding:30px;
+border-radius:20px;
+box-shadow:0 10px 30px #ddd;
+}
+
+h1{
+text-align:center;
 }
 
 input,textarea,button{
 width:100%;
-padding:12px;
-margin:8px 0;
+padding:15px;
+margin-top:12px;
+border-radius:10px;
+border:1px solid #ddd;
+font-size:16px;
 }
 
 button{
@@ -24,38 +41,66 @@ cursor:pointer;
 }
 
 #reply{
-background:#f2f2f2;
-padding:15px;
-margin-top:15px;
+margin-top:20px;
+padding:20px;
+background:#f1f1f1;
+border-radius:10px;
+min-height:50px;
 }
+
 </style>
 
 </head>
 
+
 <body>
 
-<h1>🤖 ClerkAI Sales Assistant</h1>
+<div class="container">
 
-<input id="business" placeholder="Business name" value="Luxury Watch">
+<h1>🤖 ClerkAI</h1>
 
-<input id="products" placeholder="Products" value="Rolex watches, Smart watches, Gold watches">
+<p>
+AI Sales Assistant for your business
+</p>
 
-<input id="price" placeholder="Price" value="Starting from $500">
 
-<textarea id="message" placeholder="Customer message"></textarea>
+<input id="business"
+value="Luxury Watch"
+placeholder="Business Name">
+
+
+<input id="products"
+value="Rolex watches, Smart watches, Gold watches"
+placeholder="Products">
+
+
+<input id="price"
+value="Starting from $500"
+placeholder="Price">
+
+
+<textarea id="message"
+placeholder="Customer message"></textarea>
+
 
 <button onclick="sendMessage()">
-Send
+Send to AI
 </button>
 
-<div id="reply"></div>
+
+<div id="reply">
+AI reply will appear here...
+</div>
+
+
+</div>
 
 
 <script>
 
 async function sendMessage(){
 
-const response = await fetch(
+let res = await fetch(
 "https://clerkai-api-2026.nnebin6.workers.dev",
 {
 method:"POST",
@@ -82,11 +127,12 @@ language:"English"
 });
 
 
-const data = await response.json();
+let data = await res.json();
 
 
 document.getElementById("reply").innerHTML =
 data.reply;
+
 
 }
 
