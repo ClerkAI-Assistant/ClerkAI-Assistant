@@ -88,4 +88,216 @@ export default {
       }
 
 
-      let reply = "";
+      let reply = "";if (language === "Persian") {
+
+  if (intent === "buy") {
+
+    reply =
+`انتخاب عالی 😊
+
+ممنون که ${business} را انتخاب کردید.
+
+محصولات ما:
+${products}
+
+قیمت:
+${price}
+
+برای تکمیل سفارش لطفاً ارسال کنید:
+
+- مدل مورد نظر
+- بودجه تقریبی
+- شهر محل تحویل
+
+ما بهترین گزینه را به شما پیشنهاد می‌دهیم.`;
+
+  }
+
+
+  else if (intent === "price") {
+
+    reply =
+`سلام 😊
+
+ممنون که با ${business} تماس گرفتید.
+
+محصولات:
+${products}
+
+قیمت:
+${price}
+
+برای انتخاب بهتر، سبک و بودجه خود را بفرمایید تا راهنمایی کنیم.`;
+
+  }
+
+
+  else if (intent === "discount") {
+
+    reply =
+`سلام 😊
+
+ما گزینه‌های مختلفی برای بودجه‌های متفاوت داریم.
+
+محصولات:
+${products}
+
+مدل مورد علاقه یا بودجه خود را بفرمایید تا بهترین پیشنهاد را بدهیم.`;
+
+  }
+
+
+  else if (intent === "delivery") {
+
+    reply =
+`سلام 😊
+
+برای اطلاعات ارسال لطفاً شهر و کشور خود را بفرمایید تا بهترین روش تحویل را بررسی کنیم.`;
+
+  }
+
+
+  else if (intent === "objection") {
+
+    reply =
+`کاملاً درک می‌کنیم 😊
+
+ما مدل‌های مختلف با قیمت‌های متفاوت داریم.
+
+بودجه خود را بفرمایید تا مناسب‌ترین گزینه را پیشنهاد دهیم.`;
+
+  }
+
+
+  else if (intent === "support") {
+
+    reply =
+`سلام 😊
+
+لطفاً مشکل یا درخواست خود را توضیح دهید تا کمک کنیم.`;
+
+  }
+
+
+  else {
+
+    reply =
+`سلام 😊
+
+به ${business} خوش آمدید.
+
+محصولات ما:
+${products}
+
+چطور می‌توانیم کمک کنیم؟`;
+
+  }
+
+
+} else {
+
+
+  if (intent === "buy") {
+
+    reply =
+`Great choice 😊
+
+Thank you for choosing ${business}.
+
+Our products:
+${products}
+
+Price:
+${price}
+
+To complete your order please tell us:
+
+- Preferred model
+- Budget range
+- Delivery location
+
+We will recommend the best option for you.`;
+
+  }
+
+
+  else if (intent === "price") {
+
+    reply =
+`Hello 😊
+
+Thank you for contacting ${business}.
+
+Our products:
+${products}
+
+Price:
+${price}
+
+Tell us your preferred style and budget, and we will help you choose the best option.`;
+
+  }
+
+
+  else if (intent === "discount") {
+
+    reply =
+`Hello 😊
+
+We have different options for different budgets.
+
+Products:
+${products}
+
+Which model are you interested in?`;
+
+  }
+
+
+  else if (intent === "delivery") {
+
+    reply =
+`Hello 😊
+
+Please tell us your location and we will help with delivery information.`;
+
+  }
+
+
+  else if (intent === "objection") {
+
+    reply =
+`I understand 😊
+
+We have options for different budgets.
+
+May I know your preferred budget?`;
+
+  }
+
+
+  else if (intent === "support") {
+
+    reply =
+`Hello 😊
+
+Please describe your issue and our team will help you.`;
+
+  }
+
+
+  else {
+
+    reply =
+`Hello 😊
+
+Welcome to ${business}.
+
+Our products:
+${products}
+
+How can we help you today?`;
+
+  }
+
+}
